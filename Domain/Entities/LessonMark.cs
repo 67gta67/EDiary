@@ -1,0 +1,12 @@
+namespace Domain;
+
+public class LessonMark
+{
+    public Guid Id { get; set; }
+
+    public required Guid StudentId { get; set; }
+
+    public required Guid LessonId { get; set; }
+
+    // TODO: Подумать над енамом для оценки
+}
