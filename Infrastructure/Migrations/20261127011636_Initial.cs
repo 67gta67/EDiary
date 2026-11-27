@@ -98,7 +98,7 @@ namespace Infrastructure.Migrations
                     SchoolId = table.Column<Guid>(type: "uuid", nullable: false),
                     TeacherId = table.Column<Guid>(type: "uuid", nullable: false),
                     Grade = table.Column<long>(type: "bigint", nullable: false),
-                    Letter = table.Column<char>(type: "character(1)", nullable: false)
+                    Letter = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261126215339_Initial")]
+    [Migration("20261127011636_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,8 +34,9 @@ namespace Infrastructure.Migrations
                     b.Property<long>("Grade")
                         .HasColumnType("bigint");
 
-                    b.Property<char>("Letter")
-                        .HasColumnType("character(1)");
+                    b.Property<string>("Letter")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<Guid>("SchoolId")
                         .HasColumnType("uuid");
