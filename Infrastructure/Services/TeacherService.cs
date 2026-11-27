@@ -2,8 +2,7 @@ using Domain.Entities;
 using Domain.Repositories;
 
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto;
-using Infrastructure.Services.Dto.Teacher;
+using Infrastructure.IServices.Dto.Teacher;
 
 namespace Infrastructure.Services;
 

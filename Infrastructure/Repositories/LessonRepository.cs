@@ -11,6 +11,7 @@ public class LessonRepository(AppDbContext dbContext) : ILessonRepository
     public Lesson GetLesson(Guid id)
     {
         return dbContext.Lessons
+                   .AsNoTracking()
                    .Include(x => x.Group)
                    .Include(x => x.Teacher)
                    .Include(x => x.StudyRoom)
@@ -43,6 +44,17 @@ public class LessonRepository(AppDbContext dbContext) : ILessonRepository
     public void CreateLesson(Lesson lesson)
     {
         dbContext.Lessons.Add(lesson);
+        dbContext.SaveChanges();
+    }
+
+    public void CreateMark(LessonMark mark)
+    {
+        var lesson = dbContext.Lessons
+                         .Include(x => x.Marks)
+                         .FirstOrDefault(x => x.Id == mark.LessonId)
+                     ?? throw new NotFoundException($"Урок с id: {mark.LessonId} не найден");
+
+        lesson.Marks.Add(mark);
         dbContext.SaveChanges();
     }
 }

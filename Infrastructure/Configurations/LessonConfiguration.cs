@@ -27,5 +27,8 @@ internal class LessonConfiguration : IEntityTypeConfiguration<Lesson>
         builder.HasOne(x => x.Period)
             .WithMany()
             .HasForeignKey(x => x.PeriodId);
+
+        builder.HasMany(x => x.Marks)
+            .WithOne();
     }
 }

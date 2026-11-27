@@ -8,5 +8,5 @@ public class LessonMark
 
     public required Guid LessonId { get; set; }
 
-    // TODO: Подумать над енамом для оценки
+    public required uint Value { get; set; }
 }

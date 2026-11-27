@@ -1,7 +1,9 @@
-namespace Infrastructure.Services.Dto.Lesson;
+namespace Infrastructure.IServices.Dto.Lesson;
 
-public class CreateLessonDto
+public class LessonDto
 {
+    public required Guid Id { get; init; }
+
     public required Guid TeacherId { get; init; }
 
     public required Guid GroupId { get; init; }

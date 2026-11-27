@@ -123,6 +123,28 @@ namespace Infrastructure.Migrations
                     b.ToTable("Lessons");
                 });
 
+            modelBuilder.Entity("Domain.Entities.LessonMark", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("LessonId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uuid");
+
+                    b.Property<long>("Value")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
+
+                    b.ToTable("LessonMark");
+                });
+
             modelBuilder.Entity("Domain.Entities.Period", b =>
                 {
                     b.Property<Guid>("Id")
@@ -286,6 +308,21 @@ namespace Infrastructure.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("GroupStudent", b =>
+                {
+                    b.Property<Guid>("GroupsId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("StudentsId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("GroupsId", "StudentsId");
+
+                    b.HasIndex("StudentsId");
+
+                    b.ToTable("GroupStudent");
+                });
+
             modelBuilder.Entity("Domain.Entities.Class", b =>
                 {
                     b.HasOne("Domain.Entities.School", "School")
@@ -359,6 +396,15 @@ namespace Infrastructure.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("Domain.Entities.LessonMark", b =>
+                {
+                    b.HasOne("Domain.Entities.Lesson", null)
+                        .WithMany("Marks")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Domain.Entities.Student", b =>
                 {
                     b.HasOne("Domain.Entities.Class", "Class")
@@ -379,6 +425,26 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("School");
+                });
+
+            modelBuilder.Entity("GroupStudent", b =>
+                {
+                    b.HasOne("Domain.Entities.Group", null)
+                        .WithMany()
+                        .HasForeignKey("GroupsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Student", null)
+                        .WithMany()
+                        .HasForeignKey("StudentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lesson", b =>
+                {
+                    b.Navigation("Marks");
                 });
 #pragma warning restore 612, 618
         }

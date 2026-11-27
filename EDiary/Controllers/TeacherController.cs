@@ -1,7 +1,5 @@
-using Domain.Exceptions;
-
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto.Teacher;
+using Infrastructure.IServices.Dto.Teacher;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,14 +12,7 @@ public class TeacherController(ITeacherService service) : ControllerBase
     [HttpGet("{id:guid}")]
     public IActionResult GetTeacher([FromRoute] Guid id)
     {
-        try
-        {
-            return Ok(service.GetTeacher(id));
-        }
-        catch (NotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
+        return Ok(service.GetTeacher(id));
     }
 
     [HttpGet]

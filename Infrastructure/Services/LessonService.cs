@@ -1,7 +1,7 @@
 using Domain.Repositories;
 
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto.Lesson;
+using Infrastructure.IServices.Dto.Lesson;
 
 namespace Infrastructure.Services;
 
@@ -66,6 +66,20 @@ public class LessonService(ILessonRepository repository) : ILessonService
                 Date = dto.Date,
                 StartTime = dto.StartTime,
                 EndTime = dto.EndTime,
+            });
+    }
+
+    public void CreateMark(Guid lessonId, CreateMarkDto dto)
+    {
+        var lesson = repository.GetLesson(lessonId);
+
+        // lesson.Group.Students.FirstOrDefault(x => x.Id == dto.StudentId) ??
+        // throw new NotFoundException($"Ученик с id: {dto.StudentId} не найден");
+
+        repository.CreateMark(
+            new()
+            {
+                Id = Guid.NewGuid(), StudentId = dto.StudentId, LessonId = lessonId, Value = dto.Value,
             });
     }
 }

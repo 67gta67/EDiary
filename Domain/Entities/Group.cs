@@ -13,4 +13,6 @@ public class Group
     public Subject Subject { get; set; } = null!;
 
     public required string Name { get; set; }
+
+    public IList<Student> Students { get; set; } = null!;
 }

@@ -1,7 +1,7 @@
 using Domain.Repositories;
 
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto.Class;
+using Infrastructure.IServices.Dto.Class;
 
 namespace Infrastructure.Services;
 

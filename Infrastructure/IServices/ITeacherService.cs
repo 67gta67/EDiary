@@ -1,4 +1,4 @@
-using Infrastructure.Services.Dto.Teacher;
+using Infrastructure.IServices.Dto.Teacher;
 
 namespace Infrastructure.IServices;
 

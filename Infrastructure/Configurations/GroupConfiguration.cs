@@ -19,5 +19,9 @@ public class GroupConfiguration : IEntityTypeConfiguration<Group>
         builder.HasOne(x => x.Subject)
             .WithMany()
             .HasForeignKey(x => x.SubjectId);
+
+        builder.HasMany(x => x.Students)
+            .WithMany(x => x.Groups)
+            .UsingEntity(j => j.ToTable("GroupToStudents"));
     }
 }

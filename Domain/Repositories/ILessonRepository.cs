@@ -14,4 +14,6 @@ public interface ILessonRepository
         TimeOnly toTime);
 
     void CreateLesson(Lesson lesson);
+
+    void CreateMark(LessonMark mark);
 }

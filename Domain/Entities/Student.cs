@@ -19,4 +19,6 @@ public class Student
     public required string Login { get; set; }
 
     public required string HashedPassword { get; set; }
+
+    public IList<Group> Groups { get; set; } = null!;
 }

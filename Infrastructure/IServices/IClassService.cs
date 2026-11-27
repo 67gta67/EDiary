@@ -1,4 +1,4 @@
-using Infrastructure.Services.Dto.Class;
+using Infrastructure.IServices.Dto.Class;
 
 namespace Infrastructure.IServices;
 

@@ -1,7 +1,5 @@
-using Domain.Exceptions;
-
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto.Class;
+using Infrastructure.IServices.Dto.Class;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,14 +12,7 @@ public class ClassController(IClassService service) : ControllerBase
     [HttpGet("{id:guid}")]
     public IActionResult GetClass([FromRoute] Guid id)
     {
-        try
-        {
-            return Ok(service.GetClass(id));
-        }
-        catch (NotFoundException e)
-        {
-            return NotFound(e.Message);
-        }
+        return Ok(service.GetClass(id));
     }
 
     [HttpPost]

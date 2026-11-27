@@ -1,4 +1,4 @@
-using Infrastructure.Services.Dto.Lesson;
+using Infrastructure.IServices.Dto.Lesson;
 
 namespace Infrastructure.IServices;
 
@@ -14,4 +14,6 @@ public interface ILessonService
         TimeOnly toTime);
 
     void CreateLesson(CreateLessonDto dto);
+
+    void CreateMark(Guid lessonId, CreateMarkDto dto);
 }

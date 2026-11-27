@@ -1,9 +1,7 @@
-namespace Infrastructure.Services.Dto.Teacher;
+namespace Infrastructure.IServices.Dto.Teacher;
 
-public class TeacherDto
+public class CreateTeacherDto
 {
-    public required Guid Id { get; init; }
-
     public required Guid SchoolId { get; init; }
 
     public required string FirstName { get; init; }

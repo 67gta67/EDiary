@@ -1,4 +1,4 @@
-namespace Infrastructure.Services.Dto.Class;
+namespace Infrastructure.IServices.Dto.Class;
 
 public class CreateClassDto
 {

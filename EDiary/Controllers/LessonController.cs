@@ -1,7 +1,5 @@
-using Domain.Exceptions;
-
 using Infrastructure.IServices;
-using Infrastructure.Services.Dto.Lesson;
+using Infrastructure.IServices.Dto.Lesson;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,14 +12,7 @@ public class LessonController(ILessonService service) : ControllerBase
     [HttpGet("{id:guid}")]
     public IActionResult GetLesson([FromRoute] Guid id)
     {
-        try
-        {
-            return Ok(service.GetLesson(id));
-        }
-        catch (NotFoundException e)
-        {
-            return NotFound(e.Message);
-        }
+        return Ok(service.GetLesson(id));
     }
 
     [HttpGet]
@@ -39,15 +30,15 @@ public class LessonController(ILessonService service) : ControllerBase
     [HttpPost]
     public IActionResult CreateLesson([FromBody] CreateLessonDto dto)
     {
-        try
-        {
-            service.CreateLesson(dto);
+        service.CreateLesson(dto);
 
-            return Created();
-        }
-        catch (InvalidLessonException e)
-        {
-            return BadRequest(e.Message);
-        }
+        return Created();
+    }
+
+    [HttpPost("{lessonId:guid}/mark")]
+    public IActionResult CreateMark([FromRoute] Guid lessonId, [FromBody] CreateMarkDto dto)
+    {
+        service.CreateMark(lessonId, dto);
+        return Created();
     }
 }

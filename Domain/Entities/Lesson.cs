@@ -39,7 +39,9 @@ public class Lesson
 
     public required DateOnly Date { get; set; }
 
-    public required TimeOnly StartTime { get; init; }
+    public required TimeOnly StartTime { get; set; }
 
-    public required TimeOnly EndTime { get; init; }
+    public required TimeOnly EndTime { get; set; }
+
+    public IList<LessonMark> Marks { get; set; } = null!;
 }
