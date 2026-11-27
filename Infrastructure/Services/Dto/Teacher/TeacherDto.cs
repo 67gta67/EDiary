@@ -1,4 +1,4 @@
-namespace Infrastructure.Services.Dto;
+namespace Infrastructure.Services.Dto.Teacher;
 
 public class TeacherDto
 {

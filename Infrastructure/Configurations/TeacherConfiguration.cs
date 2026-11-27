@@ -1,4 +1,5 @@
 using Domain;
+using Domain.Entities;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -11,5 +12,9 @@ internal class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     {
         builder.ToTable(nameof(Teacher));
         builder.HasKey(x => x.Id);
+
+        builder.HasOne(x => x.School)
+            .WithMany()
+            .HasForeignKey(x => x.SchoolId);
     }
 }

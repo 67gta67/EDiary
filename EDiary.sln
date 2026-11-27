@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{DB037E2E-1204-48F2-BDB8-4B6B5A8299F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Migrations", "Infrastructure.Migrations\Infrastructure.Migrations.csproj", "{74B86D39-6CA7-4300-A447-968DDCE4464F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{0D80018E-F36F-4FB1-904C-8CDB42DCEE85}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
@@ -31,9 +29,7 @@ Global
 		{DB037E2E-1204-48F2-BDB8-4B6B5A8299F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB037E2E-1204-48F2-BDB8-4B6B5A8299F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB037E2E-1204-48F2-BDB8-4B6B5A8299F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74B86D39-6CA7-4300-A447-968DDCE4464F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74B86D39-6CA7-4300-A447-968DDCE4464F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74B86D39-6CA7-4300-A447-968DDCE4464F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74B86D39-6CA7-4300-A447-968DDCE4464F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

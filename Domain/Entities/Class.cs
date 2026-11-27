@@ -6,9 +6,13 @@ public class Class
 
     public required Guid SchoolId { get; set; }
 
+    public School School { get; set; } = null!;
+
     public required Guid TeacherId { get; set; }
+
+    public Teacher Teacher { get; set; } = null!;
 
     public required uint Grade { get; set; }
 
-    public required char Letter { get; set; }
+    public required string Letter { get; set; }
 }

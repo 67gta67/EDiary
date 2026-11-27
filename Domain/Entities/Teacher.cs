@@ -1,10 +1,12 @@
-﻿namespace Domain;
+﻿namespace Domain.Entities;
 
 public class Teacher
 {
     public required Guid Id { get; set; }
 
     public required Guid SchoolId { get; set; }
+
+    public School School { get; set; } = null!;
 
     public required string FirstName { get; set; }
 

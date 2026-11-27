@@ -1,6 +1,7 @@
 using Domain.Repositories;
 
 using Infrastructure;
+using Infrastructure.IServices;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 
@@ -18,14 +19,18 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(
-        "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=postgres;CommandTimeout=10000");
-
-    // options => options.MigrationsAssembly("Infrastructure.Migrations"));
+        builder.Configuration.GetConnectionString("EDiaryDatabase"));
 });
 
+builder.Services.AddScoped<IClassRepository, ClassRepository>();
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
+builder.Services.AddScoped<ISchoolRepository, SchoolRepository>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
-builder.Services.AddScoped<TeacherService, TeacherService>();
+
+builder.Services.AddScoped<IClassService, ClassService>();
+builder.Services.AddScoped<ILessonService, LessonService>();
+builder.Services.AddScoped<ISchoolService, SchoolService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
 
 var app = builder.Build();
 
@@ -37,7 +42,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Применение миграций к бд
 using var serviceScope = app.Services.CreateScope();
 var context = serviceScope.ServiceProvider.GetRequiredService<AppDbContext>();
 context.Database.Migrate();

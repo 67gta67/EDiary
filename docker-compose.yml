@@ -1,10 +1,12 @@
 name: ediary
+
+networks:
+  backend-network:
+
 services:
   database:
+    container_name: ediary_database
     image: postgres:16
-    container_name: EDiaryDatabase
-    ports:
-      - "5432:5432"
     volumes:
       - ./data:/var/lib/postgresql/data
     environment:
@@ -12,7 +14,14 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
     networks:
-      - dockerapi
-networks:
-  dockerapi:
-    name: ediary_dockerapi
+      - backend-network
+  ediary:
+    container_name: ediary_backend
+    image: ediary
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: EDiary/Dockerfile
+    networks:
+      - backend-network

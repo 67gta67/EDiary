@@ -19,19 +19,19 @@ public class Lesson
 
     public required Guid TeacherId { get; set; }
 
-    public required Teacher Teacher { get; set; }
+    public Teacher Teacher { get; set; } = null!;
 
     public required Guid GroupId { get; set; }
 
-    public required Group Group { get; set; }
+    public Group Group { get; set; } = null!;
 
     public required Guid StudyRoomId { get; set; }
 
-    public required StudyRoom StudyRoom { get; set; }
+    public StudyRoom StudyRoom { get; set; } = null!;
 
     public required Guid PeriodId { get; set; }
 
-    public required Period Period { get; set; }
+    public Period Period { get; set; } = null!;
 
     public required string Topic { get; set; }
 
